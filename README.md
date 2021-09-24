@@ -5,12 +5,12 @@
 | ----------------- | ------- | ------------------------- |
 | email             | string  | null: false, unique: true |
 | encypted_password | string  | null: false               | 
-| nickname          | string  | null: false, unique: true |
+| nickname          | string  | null: false               |
 | last_name         | string  | null: false               |
 | first_name        | string  | null: false               |
 | last_name_kana    | string  | null: false               |
 | first_name_kana   | string  | null: false               |
-| date_of_birth     | integer | null: false               |
+| date_of_birth     | date    | null: false               |
 
 ### Association
 - has_many :items
