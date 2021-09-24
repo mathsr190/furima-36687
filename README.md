@@ -1,16 +1,16 @@
 # テーブル設計
 
 ## usersテーブル
-| Column            | Type    | Options                   |
-| ----------------- | ------- | ------------------------- |
-| email             | string  | null: false, unique: true |
-| encypted_password | string  | null: false               | 
-| nickname          | string  | null: false               |
-| last_name         | string  | null: false               |
-| first_name        | string  | null: false               |
-| last_name_kana    | string  | null: false               |
-| first_name_kana   | string  | null: false               |
-| date_of_birth     | date    | null: false               |
+| Column            | Type   | Options                   |
+| ----------------- | ------ | ------------------------- |
+| email             | string | null: false, unique: true |
+| encypted_password | string | null: false               |
+| nickname          | string | null: false               |
+| last_name         | string | null: false               |
+| first_name        | string | null: false               |
+| last_name_kana    | string | null: false               |
+| first_name_kana   | string | null: false               |
+| date_of_birth     | date   | null: false               |
 
 ### Association
 - has_many :items
@@ -43,7 +43,7 @@
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
 | item   | references | null: false, foreign_key: true |
-| user   | references | null: false, foreign_key: true |              
+| user   | references | null: false, foreign_key: true |
 
 
 ### Association
