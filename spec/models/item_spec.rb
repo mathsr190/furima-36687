@@ -7,7 +7,7 @@ RSpec.describe Item, type: :model do
 
   describe '商品出品' do
     context '商品が出品できる場合' do
-      it '全項目(商品画像、商品名、商品の説明、商品のカテゴリ、商品の状態、配送料の負担、発送元の地域、発送までの日数、価格)があれば保存できる' do
+      it '全項目(商品画像、商品名、商品の説明、商品のカテゴリ、商品の状態、配送料の負担、発送元の地域、発送までの日数、価格)、user紐付けがあれば保存できる' do
         expect(@item).to be_valid
       end
     end
