@@ -11,7 +11,7 @@ RSpec.describe User, type: :model do
         expect(@user).to be_valid
       end
     end
-    
+
     context '新規登録できない場合' do
       it "nicknameが空では登録できない" do
         @user.nickname = ''
@@ -53,6 +53,12 @@ RSpec.describe User, type: :model do
       it "passwordが数字だけでは登録できない" do
         @user.password = '123456'
         @user.password_confirmation = '123456'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password is invalid")
+      end
+      it "passwordが全角では登録できない" do
+        @user.password = 'ぱすわーど'
+        @user.password_confirmation = 'ぱすわーど'
         @user.valid?
         expect(@user.errors.full_messages).to include("Password is invalid")
       end
