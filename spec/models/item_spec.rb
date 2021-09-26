@@ -62,6 +62,11 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is invalid')
       end
+      it '販売価格が空だと保存できない' do
+        @item.price = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price can't be blank")
+      end
       it '販売価格が小数だと保存できない' do
         @item.price = 300.1
         @item.valid?
