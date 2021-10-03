@@ -19,11 +19,10 @@
         ¥ <%= @item.price %>
       </span>
       <span class="item-postage">
-        <%= ShippingFeeStatus.find(@item.shipping_fee_status_id).attributes[:name] %>
+        <%= @item.shipping_fee_status.name %>
       </span>
     </div>
 
-    <%# ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
     <% if user_signed_in? && current_user.id == @item.user_id %>
     <%= link_to "商品の編集", "#", method: :get, class: "item-red-btn" %>
     <p class="or-text">or</p>
@@ -33,10 +32,9 @@
     <%= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
     <%# //商品が売れていない場合はこちらを表示しましょう %>
     <% end %>
-    <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
 
     <div class="item-explain-box">
-      <span><%= "商品説明" %></span>
+      <span><%= @item.info %></span>
     </div>
     <table class="detail-table">
       <tbody>
@@ -46,23 +44,23 @@
         </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>
-          <td class="detail-value"><%= Category.find(@item.category_id).attributes[:name] %></td>
+          <td class="detail-value"><%= @item.category.name %></td>
         </tr>
         <tr>
           <th class="detail-item">商品の状態</th>
-          <td class="detail-value"><%= SalesStatus.find(@item.sales_status_id).attributes[:name] %></td>
+          <td class="detail-value"><%= @item.sales_status.name %></td>
         </tr>
         <tr>
           <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><%= ShippingFeeStatus.find(@item.shipping_fee_status_id).attributes[:name] %></td>
+          <td class="detail-value"><%= @item.shipping_fee_status.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= Prefecture.find(@item.prefecture_id).attributes[:name] %></td>
+          <td class="detail-value"><%= @item.prefecture.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
-          <td class="detail-value"><%= ScheduledDelivery.find(@item.scheduled_delivery_id).attributes[:name] %></td>
+          <td class="detail-value"><%= @item.scheduled_delivery.name %></td>
         </tr>
       </tbody>
     </table>
@@ -101,9 +99,7 @@
       後ろの商品 ＞
     </a>
   </div>
-  <%# 詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
-  <a href="#" class="another-item"><%= "商品のカテゴリー名" %>をもっと見る</a>
-  <%# //詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
+  <a href="#" class="another-item"><%= @item.category.name %>をもっと見る</a>
 </div>
 
 <%= render "shared/footer" %>
