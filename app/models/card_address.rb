@@ -1,6 +1,6 @@
 class CardAddress
   include ActiveModel::Model
-  attr_accessor :number, :exp_month, :exp_year, :cvc, :postal_code, :prefecture_id, :city, :address, :building, :phone_number, :order_id
+  attr_accessor :number, :exp_month, :exp_year, :cvc, :postal_code, :prefecture_id, :city, :address, :building, :phone_number
 
   with_options presence: true do
     validates :number
