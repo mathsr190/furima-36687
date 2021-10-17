@@ -8,9 +8,8 @@ class OrdersController < ApplicationController
     @card_address = CardAddress.new(card_address_params)
     if @card_address.valid?
       @card_address.save
-      redirect_to root_path      
+      redirect_to root_path
     else
-      @card_address
       render :index
     end
   end
