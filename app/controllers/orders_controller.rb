@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
       @card_address.save
       redirect_to root_path      
     else
+      @card_address
       render :index
     end
   end
