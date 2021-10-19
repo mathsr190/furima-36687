@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   def index
     @card_address = CardAddress.new
+    @item = Item.find(params[:item_id])
   end
 
   def create
