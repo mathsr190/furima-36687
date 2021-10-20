@@ -10,6 +10,8 @@ class CardAddress
     validates :phone_number,
               numericality: format: { with: /\A[0-9]{10,11}\z/, message: 'is invalid' }
     validates :token
+    validates :user_id
+    validates :item_id
   end
   def save
     @order = Order.create(user_id: user_id, item_id: item_id)
