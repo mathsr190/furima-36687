@@ -24,12 +24,12 @@ RSpec.describe CardAddress, type: :model do
       it '郵便番号にハイフンがないと保存できない' do
         @card_address.postal_code = Faker::Number.number(digits: 7)
         @card_address.valid?
-        expect(@card_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+        expect(@card_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
       end
       it '全角数字だと保存できない' do
         @card_address.postal_code = '１２３-４５６７'
         @card_address.valid?
-        expect(@card_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+        expect(@card_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
       end
       it '都道府県がないと保存できない' do
         @card_address.prefecture_id = nil
@@ -54,14 +54,13 @@ RSpec.describe CardAddress, type: :model do
       it '電話番号にハイフンが入っていると保存できない' do
         @card_address.phone_number = '090-1234-5678'
         @card_address.valid?
-        expect(@card_address.errors.full_messages).to include("Phone number is invalid")
+        expect(@card_address.errors.full_messages).to include('Phone number is invalid')
       end
       it 'トークンがないと保存できない' do
-        @card_address.token =  nil
+        @card_address.token = nil
         @card_address.valid?
         expect(@card_address.errors.full_messages).to include("Token can't be blank")
       end
-
     end
   end
 end
