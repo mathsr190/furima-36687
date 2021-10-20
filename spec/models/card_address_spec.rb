@@ -56,6 +56,16 @@ RSpec.describe CardAddress, type: :model do
         @card_address.valid?
         expect(@card_address.errors.full_messages).to include('Phone number is invalid')
       end
+      it '電話番号が9桁以下だと保存できない' do
+        @card_address.phone_number = '123456789'
+        @card_address.valid?
+        expect(@card_address.errors.full_messages).to include('Phone number is invalid')
+      end
+      it '電話番号が12桁以上だと保存できない' do
+        @card_address.phone_number = '123456789012'
+        @card_address.valid?
+        expect(@card_address.errors.full_messages).to include('Phone number is invalid')
+      end
       it 'トークンがないと保存できない' do
         @card_address.token = nil
         @card_address.valid?
