@@ -8,8 +8,7 @@ class CardAddress
     validates :city
     validates :address
     validates :phone_number,
-              numericality: { only_integer: true, greater_than_or_equal_to: 1_000_000_000, less_than_or_equal_to: 99_999_999_999,
-                              message: 'is invalid' }
+              numericality: format: { with: /\A[0-9]{10,11}\z/, message: 'is invalid' }
     validates :token
   end
   def save
