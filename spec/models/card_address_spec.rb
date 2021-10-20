@@ -16,26 +16,6 @@ RSpec.describe CardAddress, type: :model do
       end
     end
     context '商品購入できない場合' do
-      it 'カード番号がないと保存できない' do
-        @card_address.number = nil
-        @card_address.valid?
-        expect(@card_address.errors.full_messages).to include("Number can't be blank")
-      end
-      it '有効期限月がないと保存できない' do
-        @card_address.exp_month = nil
-        @card_address.valid?
-        expect(@card_address.errors.full_messages).to include("Exp month can't be blank")
-      end
-      it '有効期限年がないと保存できない' do
-        @card_address.exp_year = nil
-        @card_address.valid?
-        expect(@card_address.errors.full_messages).to include("Exp year can't be blank")
-      end
-      it 'セキュリティコードがないと保存できない' do
-        @card_address.cvc = nil
-        @card_address.valid?
-        expect(@card_address.errors.full_messages).to include("Cvc can't be blank")
-      end
       it '郵便番号がないと保存できない' do
         @card_address.postal_code = nil
         @card_address.valid?
@@ -75,6 +55,11 @@ RSpec.describe CardAddress, type: :model do
         @card_address.phone_number = '090-1234-5678'
         @card_address.valid?
         expect(@card_address.errors.full_messages).to include("Phone number is invalid")
+      end
+      it 'トークンがないと保存できない' do
+        @card_address.token =  nil
+        @card_address.valid?
+        expect(@card_address.errors.full_messages).to include("Token can't be blank")
       end
 
     end
