@@ -6,7 +6,7 @@ FactoryBot.define do
     city          { Faker::Address.city }
     address       { Faker::Address.street_name }
     building      { Faker::Address.building_number }
-    phone_number  { Faker::Number.between(from: 1_000_000_000, to: 99_999_999_999) }
+    phone_number  { Faker::Number.number(digits: 10) }
     token         { 'tok_abcdefghijk00000000000000000' }
     user_id       { Faker::Number.between(from: 1, to: 10) }
     item_id       { Faker::Number.between(from: 1, to: 10) }
