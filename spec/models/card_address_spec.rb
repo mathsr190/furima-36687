@@ -32,7 +32,7 @@ RSpec.describe CardAddress, type: :model do
         expect(@card_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
       end
       it '都道府県がないと保存できない' do
-        @card_address.prefecture_id = nil
+        @card_address.prefecture_id = 0
         @card_address.valid?
         expect(@card_address.errors.full_messages).to include("Prefecture can't be blank")
       end
@@ -60,6 +60,16 @@ RSpec.describe CardAddress, type: :model do
         @card_address.token = nil
         @card_address.valid?
         expect(@card_address.errors.full_messages).to include("Token can't be blank")
+      end
+      it 'user_idが空だと保存できない' do
+        @card_address.user_id = nil
+        @card_address.valid?
+        expect(@card_address.errors.full_messages).to include("User can't be blank")
+      end
+      it 'item_idが空だと保存できない' do
+        @card_address.item_id = nil
+        @card_address.valid?
+        expect(@card_address.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
