@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :move_to_index, only: [:index]
+  before_action :move_to_root, only: [:index]
 
   def index
     @card_address = CardAddress.new
@@ -27,9 +27,9 @@ class OrdersController < ApplicationController
     )
   end
 
-  def move_to_index
+  def move_to_root
     @item = Item.find(params[:item_id])
-    redirect_to root_path if (user_signed_in? && current_user.id == @item.user_id) || !user_signed_in?
+    redirect_to root_path if (user_signed_in? && current_user.id == @item.user_id) || !user_signed_in? || !@item.order_id.nil?
   end
 
   def pay_item
